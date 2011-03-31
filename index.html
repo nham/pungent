@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>  
+<head> 
+  <meta charset="utf-8" />
+  <title>pungent</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="assets/pungent.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> 
+  <script src="assets/pungent.js"></script> 
+</head> 
+ 
+<body><div>
+
+  <header>
+    <div id="logo"> </div>
+    <div id="open_help">help</div>
+    <div id="auth">
+      <div id="login">
+      <span>login via:</span>
+      <ul>
+        <li><a href="auth/?a=login&amp;m=facebook"><img src="assets/img/f_small.png"></a></li>
+        <li><a href="auth/?a=login&amp;m=twitter"><img src="assets/img/t_small.png"></a></li>
+        <li><a href="auth/?a=login&amp;m=google"><img src="assets/img/g_small.png"></a></li>
+      </ul>
+      </div>
+      
+      <div id="loggedin">
+        <span id="ident"></span> <a href="auth?a=logout">logout</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="help">
+    <ul>
+      <li><strong>Ctrl+Enter</strong> to create a new text chunk</li>
+      <li><strong>Alt+Up/Down Arrow</strong> to move a chunk up/down</li>
+      <li><strong>Ctrl+Up/Down Arrow</strong> to change focus to previous/next chunk</li>
+      <li><strong>Ctrl+Space</strong> to collapse/expand a node</li>
+      <li><strong>Ctrl+Shift+Left/Right Arrow</strong> to zoom in/out on a node</li>
+      <li><strong>Ctrl+Alt+Shift+Backspace</strong> deletes a node <em>and all of its children</em>. There is no undo!</li>
+      <li><strong>Tab</strong> indents, <strong>Shift+Tab</strong> dedents</li>
+    </ul>
+    <span id="close_help">close help</span>
+  </section>
+
+  <section id="content">
+  </section>
+
+  <footer>pungent: smells like victory</footer>
+
+</div></body>
+</html>
