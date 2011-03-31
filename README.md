@@ -1,4 +1,4 @@
-scraps2?
+pungent
 ========
 
-This may or may not end up being called a rewrite of "scraps," a previous note-taking application, because the format is entirely different even if the goal is the same. The idea I'm working off of now is a personal ajax wiki, so in fact it's not a "wiki" in the sense that it enables collaborative editing. It is only a wiki in the sense that there are named pages of content that can be linked to one another.
+Second incarnation of a personal note-taking app. I'm seeing what I can do with a Workflowy-like app, because I like the idea of all of my notes being in essentially one big tree and being able to zoom in on parts of the tree. I need to spend some quality time actually using this app so  I can figure out where I want to go with it, but for now it's essentially a tweaked Workflowy clone with less features.
