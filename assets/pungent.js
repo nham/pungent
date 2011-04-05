@@ -415,14 +415,36 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
 
 
   $.fn.childNodes = function() {
-    var children = this.children('.children').children();
-    return (children.length !== 0) ? children : false;
+    if(this !== pungent) {
+      var children = this.children('.children').children();
+      return (children.length !== 0) ? children : false;
+    } else {
+      return this.children('.node');
+    }
   }
 
 
   $.fn.firstChild = function() {
     var children = this.childNodes();
     return (children !== false) ? $(children[0]) : false;
+  };
+
+
+  $.fn.ancestors = function() {
+    var children = this.childNodes();
+    var anc = $([]);
+    var this_anc, this_child;
+
+    for(var i = 0; i < children.length; i++) {
+      this_child = $(children.get(i));
+      this_anc = this_child.ancestors();
+
+      anc = anc.add(this_child);
+      if(this_anc.length !== 0) {
+        anc = anc.add(this_anc);
+      }
+    }
+    return anc;
   };
 
 
@@ -500,13 +522,10 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
 
       var newfoc;
       if((newfoc = this.prevSibling()) !== false) {
-	  console.log(newfoc);
         newfoc.setFocus();
       } else if((newfoc = this.parentNode()) !== false) {
-	  console.log(newfoc);
         newfoc.setFocus();
       } else if((newfoc = this.nextSibling()) !== false) {
-	  console.log(newfoc);
         newfoc.setFocus();
       }
 
@@ -715,6 +734,7 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
       }
 
       if(this.childNodes() !== false) {
+        this.ancestors().resizeText();
         this.firstChild().setFocus();
       }
 
@@ -730,6 +750,9 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
         zh_parent.removeClass('zoomed_past');
         zh_parent.addClass('zoom_header');
         zh_parent.resizeAfterFontSizeChange();
+        zh_parent.ancestors().resizeText();
+      } else {
+        pungent.ancestors().resizeText();
       }
     }
   };
