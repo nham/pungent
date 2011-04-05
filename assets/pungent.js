@@ -331,15 +331,16 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
     var txt2 = txt.substr(pos);
     var newnode;
 
-    if(pos === txt.length) {
-      if(this.childNodes() !== false && !this.hasClass('collapsed')) {
-        newnode = this.prependNode();
-      } else {
-        newnode = this.insertNode(txt2);
-      }
+    if(this.hasClass('zoom_header') ||
+       this.childNodes() !== false && !this.hasClass('collapsed')) {
+      newnode = this.prependNode();
     } else {
+      newnode = this.insertNode(txt2);
+    }
+
+
+    if(!this.hasClass('zoom_header') && pos !== txt.length) {
       this.children('textarea').val(txt1);
-      var newnode = this.insertNode(txt2);
       this.appendChildrenTo(newnode);
     }
 
