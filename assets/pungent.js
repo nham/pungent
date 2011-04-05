@@ -510,6 +510,7 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
       this.addClass('collapsed');
     } else {
       this.removeClass('collapsed');
+      this.ancestors().resizeText();
     }
     pungent.flagChange();
   };
