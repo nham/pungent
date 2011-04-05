@@ -616,16 +616,19 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
 
   
   $.fn.resizeText = function() {
-    var ta = this.getNodeTA();
-    try {ta.get(0).ResizeTextarea(); } catch(e) { }
+    return this.each(function() {
+      var node = $(this);
 
-    var new_val = ta.val();
-    if(new_val !== this.data("text")) {
-      this.data("text", new_val);
-      pungent.flagChange();
-    }
+      var ta = node.getNodeTA();
+      ta.get(0).ResizeTextarea();
 
-    return this;
+      var new_val = ta.val();
+      if(new_val !== node.data("text")) {
+        node.data("text", new_val);
+        pungent.flagChange();
+      }
+
+    });
   };
 
   $.fn.flagChange = function() {
@@ -692,6 +695,7 @@ var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(type
     ta.get(0).ResizeTextarea();
     ta.val(val);
   };
+
 
 
   $.fn.zoom = function(direction) {
