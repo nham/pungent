@@ -164,7 +164,7 @@ div.children {
   display: none;
 }
 
-div.node.zoomed_away {
+#content .zoomed_away {
   display: none;
 }
 
@@ -179,7 +179,11 @@ div.node {
   display: none;
 }
 
-.collapsed.zoom_header > .children > .node {
+.zoomed_past.collapsed > .children > .node {
+  display: block;
+}
+
+.zoom_header.collapsed > .children > .node {
   display: block;
 }
 
