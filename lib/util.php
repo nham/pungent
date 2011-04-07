@@ -1,12 +1,10 @@
 <?php
 require 'config.php';
-$GLOBALS['cfg'] = new Config();
 
 function dbconnect() {
-  $cfg = $GLOBALS['cfg'];
-  $dsn = 'mysql:dbname=' . $cfg::$db_name . ';host=' . $cfg::$db_host;
-  $dbuser = $cfg::$db_user;
-  $dbpass = $cfg::$db_pass;
+  $dsn = 'mysql:dbname=' . Config::$db_name . ';host=' . Config::$db_host;
+  $dbuser = Config::$db_user;
+  $dbpass = Config::$db_pass;
 
   try {
     return new PDO($dsn, $dbuser, $dbpass);
@@ -34,5 +32,5 @@ function hash_valid($db, $hash) {
 
 
 function unset_auth_cookie() {
-  setcookie("user", '', time()-3600, '/pungent');
+  setcookie("user", '', time()-3600, '/');
 }

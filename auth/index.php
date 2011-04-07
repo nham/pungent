@@ -4,7 +4,7 @@ require '../lib/util.php';
 $GLOBALS['db'] = dbconnect();
 
 function goToApp() {
-  header("Location: " . $GLOBALS['cfg']::$site_url);
+  header("Location: " . Config::$site_url);
 }
 
 function passchunk() {
@@ -101,15 +101,15 @@ function auth_routine($mode, $uniqid, $ident) {
   update_ident($uid, $ident);
   store_hash($uid, $hash);
 
-  setcookie("user", $hash, time()+86400*365*5, '/pungent');
+  setcookie("user", $hash, time()+86400*365*5, '/');
   goToApp();
 }
 
 
 function facebook() {
-  $app_id = $GLOBALS['cfg']::$f_app_id;
-  $app_secret = $GLOBALS['cfg']::$f_app_secret;
-  $myurl = $GLOBALS['cfg']::$site_url . "auth/?a=login&m=facebook";
+  $app_id = Config::$f_app_id;
+  $app_secret = Config::$f_app_secret;
+  $myurl = Config::$site_url . "auth/?a=login&m=facebook";
 
   $code = $_REQUEST['code'];
   
@@ -143,11 +143,11 @@ function twitter() {
   require '../lib/tmhOAuth.php';
 
   $tmhOAuth = new tmhOAuth(array(
-    'consumer_key'    => $GLOBALS['cfg']::$t_consumer_key,
-    'consumer_secret' => $GLOBALS['cfg']::$t_consumer_secret,
+    'consumer_key'    => Config::$t_consumer_key,
+    'consumer_secret' => Config::$t_consumer_secret,
   ));
  
-  $myurl = $GLOBALS['cfg']::$site_url . "auth/?a=login&m=twitter";
+  $myurl = Config::$site_url . "auth/?a=login&m=twitter";
   session_start();
  
   if(isset($_REQUEST['oauth_verifier'])) {
